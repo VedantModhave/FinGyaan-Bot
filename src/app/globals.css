@@ -1,7 +1,8 @@
 :root {
   --background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
   --foreground: #ffffff;
-  --base-font-size: 24px;
+  --base-font-size: 104px;
+  --base-font-size-large: 32px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,16 +57,140 @@ a {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #007bff, #00aaff, #007bff);
+  background: linear-gradient(90deg, #007bff, #0af, #007bff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 3s ease infinite;
-  font-size: 48px; /* Adjust size as needed */
-  font-weight: bold; /* Make it bold */
+  animation: gradientAnimation 5s ease infinite;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.gradient-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes borderAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .welcome-message {
-  font-size: 24px; /* Adjust size as needed */
-  color: #ffffff; /* Regular text color */
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-finbot {
+  animation: soothingAnimation 6s linear infinite;
+}
+
+@keyframes soothingAnimation {
+  0% { color: #1e90ff; }
+  50% { color: #00bfff; }
+  100% { color: #1e90ff; }
+}
+
+.glow-animation {
+  position: relative;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(30, 144, 255, 0.7), 0 0 10px rgba(30, 144, 255, 0.5), 0 0 15px rgba(30, 144, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(30, 144, 255, 1), 0 0 30px rgba(30, 144, 255, 0.7), 0 0 40px rgba(30, 144, 255, 0.5);
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+}
+
+.typewriter-description {
+  color: white;
+  font-size: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white;
+  width: 0;
+  animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.description {
+  font-size: 20px;
+  color: white;
+  margin-top: 5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.description.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-container {
+  text-align: center;
+}
+
+.glow-effect {
+  text-shadow: 0 0 10px rgba(30, 144, 255, 0.7), 0 0 20px rgba(30, 144, 255, 0.5);
 }
