@@ -4,7 +4,7 @@ class MessageParser {
         this.state = state;
     }
 
-    parse = (messsage) => {
+    parse(messsage) {
         this.actionProvider.respond(messsage);
     }
 }
