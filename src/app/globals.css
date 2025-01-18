@@ -1,11 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  --foreground: #ffffff;
+  --base-font-size: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
     --foreground: #ededed;
   }
 }
@@ -20,6 +21,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--base-font-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,4 +41,31 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #007bff, #00aaff, #007bff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 3s ease infinite;
+  font-size: 48px; /* Adjust size as needed */
+  font-weight: bold; /* Make it bold */
+}
+
+.welcome-message {
+  font-size: 24px; /* Adjust size as needed */
+  color: #ffffff; /* Regular text color */
 }
