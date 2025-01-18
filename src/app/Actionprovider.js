@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "dbf46f3bb4ec40fa94a647930d82e5bd",
   baseURL: 'https://api.aimlapi.com',
   dangerouslyAllowBrowser: true,
 });
@@ -13,20 +13,20 @@ class ActionProvider {
     createCustomMessage
     stateRef
 
-constructor(
-    createChatBotMessage,
-    setStateFunc,
-    createClientMessage,
-    stateRef,
-    createCustomMessage,
-    ...rest
-) {
-    this.createChatBotMessage = createChatBotMessage;
-    this.setState = setStateFunc;
-    this.createClientMessage = createClientMessage;
-    this.stateRef = stateRef;
-    this.createCustomMessage = createCustomMessage;
-}
+    constructor(
+        createChatBotMessage,
+        setStateFunc,
+        createClientMessage,
+        stateRef,
+        createCustomMessage,
+        ...rest
+    ) {
+        this.createChatBotMessage = createChatBotMessage;
+        this.setState = setStateFunc;
+        this.createClientMessage = createClientMessage;
+        this.stateRef = stateRef;
+        this.createCustomMessage = createCustomMessage;
+    }
 
     callGenAI = async (prompt) => {
         const chatCompletion = await openai.chat.completions.create({
@@ -56,6 +56,7 @@ constructor(
             await this.timer(1000);
         }
     }
+    
     respond = (message) => {
         this.generateResponse(message);
     }
@@ -66,4 +67,5 @@ constructor(
         }))
     }
 }
+
 export default ActionProvider;
